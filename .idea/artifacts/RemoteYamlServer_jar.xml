@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RemoteYamlServer:jar">
+    <output-path>$USER_HOME$/Desktop/Servidores/RemoteYaml</output-path>
+    <root id="archive" name="RemoteYamlServer.jar">
+      <element id="module-output" name="RemoteYamlServer" />
+      <element id="extracted-dir" path="D:/N U N C A  B O R R A R  C O S A S   M U Y    I M P O R T A N T E S/LIBRERIAS/snakeyaml-1.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="D:/N U N C A  B O R R A R  C O S A S   M U Y    I M P O R T A N T E S/LIBRERIAS/gson-2.8.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
