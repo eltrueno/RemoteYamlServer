@@ -1,5 +1,16 @@
+# RemoteYaml
+
 RemoteYaml is a util that allows you to use remote yml files on any application.
 
-This is the server-side, all you have to know of it is the arguments tu run it:
+## Download
+To download the server you have to clone this repository and compile it.
 
+## Usage
+This is the server-side, all you have to know of it is the java arguments tu run it:
+
+```
 java -jar RemoteYamlServer.jar [port] [pass]
+```
+
+## Donate me
+If you like my work, pleae, consider donating [here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=86Q4P2PSKP4VG)
