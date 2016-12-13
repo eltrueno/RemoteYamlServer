@@ -1,15 +1,18 @@
 package es.eltrueno.remoteyaml.filemanager;
 
+
 import es.eltrueno.remoteyaml.cache.CacheManager;
 import es.eltrueno.remoteyaml.main;
 import es.eltrueno.remoteyaml.yml.YmlConfig;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.security.CodeSource;
 import java.util.HashMap;
-import java.util.Map;
 
 public class FileManager {
 

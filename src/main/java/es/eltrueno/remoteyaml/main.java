@@ -5,7 +5,8 @@ import es.eltrueno.remoteyaml.filemanager.FileManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class main {
 
@@ -13,12 +14,6 @@ public class main {
 
     public static String getPass(){
         return pass;
-    }
-
-    public static String getTime() {
-        return "["+LocalDateTime.now().getHour()
-                +":"+LocalDateTime.now().getMinute()
-                +":"+LocalDateTime.now().getSecond()+"] ";
     }
 
     public static void main(String[] args) {
@@ -60,6 +55,12 @@ public class main {
             System.out.println(getTime()+"A security error ocurred while opening port: "+e.getMessage());
             System.out.println(getTime()+"Closing server...");
         }
+    }
+
+    public static String getTime() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        return( sdf.format(cal.getTime()) );
     }
 
 }

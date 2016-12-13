@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class ConnectionsManager {
 
-    private static HashMap<InetAddress, Socket> connections = new HashMap<>();
+    private static HashMap<InetAddress, Socket> connections = new HashMap<InetAddress, Socket>();
 
     public static HashMap<InetAddress, Socket> getConnections() {
         return connections;
