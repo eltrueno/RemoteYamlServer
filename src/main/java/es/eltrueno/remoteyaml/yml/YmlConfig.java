@@ -10,51 +10,119 @@ import java.util.regex.Pattern;
 public class YmlConfig {
 
     private String dir;
-    private Map<String, Object> data = new HashMap<String, Object>();
+    private Map data;
 
-    public YmlConfig(String dir, HashMap<String, Object> data){
+    public YmlConfig(String dir, Map data) {
         this.dir = dir;
         this.data = data;
+    }
+
+    public Map<Object, Object> getData(){
+        return this.data;
     }
 
     public String getDir(){
         return this.dir;
     }
 
-    private Object get(String path){
-        String[] pathArray = path.split(Pattern.quote("."));
-        Map<String,Object> obj = null;
-        Object ret = null;
-        for(int i=0; i<pathArray.length; i++){
-            if(obj==null){
-                obj = (Map<String, Object>) this.data.get((String)pathArray[i]);
-            }else if(i!=(pathArray.length-1)){
-                obj = (Map<String, Object>) obj.get((String)pathArray[i]);
-            }else if(i==(pathArray.length-1)){
-                ret = obj.get(pathArray[i]);
+    /*private Map<String, Object> get(String path) {
+        Map<String, Object> ret = null;
+        if(path.contains(".")){
+            String[] pathArray = path.split(Pattern.quote("."));
+            Map<String,Object> obj = null;
+            for(int i=0; i<pathArray.length; i++){
+                if(obj==null){
+                    obj = (Map<String, Object>) this.data.get((String)pathArray[i]);
+                }else if(i!=(pathArray.length-1)){
+                    obj = (Map<String, Object>) obj.get((String)pathArray[i]);
+                }else if(i==(pathArray.length-1)){
+                    ret = obj;
+                }
             }
+        }else{
+            ret = this.data;
+        }
+        return ret;
+    }*/
+
+    public String getString(String path) {
+        String ret = null;
+        if (path.contains(".")) {
+            String[] pathArray = path.split(Pattern.quote("."));
+            Map<Object, Object> obj = null;
+            for (int i = 0; i < pathArray.length; i++) {
+                if (obj == null) {
+                    obj = (Map<Object, Object>) this.data.get(pathArray[i]);
+                } else if (i != (pathArray.length - 1)) {
+                    obj = (Map<Object, Object>) obj.get(pathArray[i]);
+                } else if (i == (pathArray.length - 1)) {
+                    ret = (String) obj.get(pathArray[i]);
+                }
+            }
+        } else {
+            ret = (String) this.data.get(path);
         }
         return ret;
     }
 
-    public String getString(String path){
-        return (String) get(path);
-    }
-
-    public ArrayList<String> getStringList(String path){
-        return (ArrayList<String>) get(path);
+    public ArrayList<?> getList(String path){
+        ArrayList<?> ret = null;
+        if (path.contains(".")) {
+            String[] pathArray = path.split(Pattern.quote("."));
+            Map<Object, Object> obj = null;
+            for (int i = 0; i < pathArray.length; i++) {
+                if (obj == null) {
+                    obj = (Map<Object, Object>) this.data.get(pathArray[i]);
+                } else if (i != (pathArray.length - 1)) {
+                    obj = (Map<Object, Object>) obj.get(pathArray[i]);
+                } else if (i == (pathArray.length - 1)) {
+                    ret = (ArrayList<?>) obj.get(pathArray[i]);
+                }
+            }
+        } else {
+            ret = (ArrayList<?>) this.data.get(path);
+        }
+        return ret;
     }
 
     public Integer getInt(String path){
-        return (Integer) get(path);
+        Integer ret = null;
+        if (path.contains(".")) {
+            String[] pathArray = path.split(Pattern.quote("."));
+            Map<Object, Object> obj = null;
+            for (int i = 0; i < pathArray.length; i++) {
+                if (obj == null) {
+                    obj = (Map<Object, Object>) this.data.get(pathArray[i]);
+                } else if (i != (pathArray.length - 1)) {
+                    obj = (Map<Object, Object>) obj.get(pathArray[i]);
+                } else if (i == (pathArray.length - 1)) {
+                    ret = (Integer) obj.get(pathArray[i]);
+                }
+            }
+        } else {
+            ret = (Integer) this.data.get(path);
+        }
+        return ret;
     }
 
     public Double getDouble(String path){
-        return (Double) get(path);
-    }
-
-    public Float getFloat(String path){
-        return (Float) get(path);
+        Double ret = null;
+        if (path.contains(".")) {
+            String[] pathArray = path.split(Pattern.quote("."));
+            Map<Object, Object> obj = null;
+            for (int i = 0; i < pathArray.length; i++) {
+                if (obj == null) {
+                    obj = (Map<Object, Object>) this.data.get(pathArray[i]);
+                } else if (i != (pathArray.length - 1)) {
+                    obj = (Map<Object, Object>) obj.get(pathArray[i]);
+                } else if (i == (pathArray.length - 1)) {
+                    ret = (Double) obj.get(pathArray[i]);
+                }
+            }
+        } else {
+            ret = (Double) this.data.get(path);
+        }
+        return ret;
     }
 
     public Set<String> getSectionKeys(String path){

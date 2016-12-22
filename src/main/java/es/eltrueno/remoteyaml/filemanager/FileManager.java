@@ -13,8 +13,16 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.security.CodeSource;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FileManager {
+
+    public static void createFolder(){
+        File f = new File(getConfigsDir());
+        if(!f.exists()){
+            f.mkdir();
+        }
+    }
 
     private static String getConfigsDir(){
         CodeSource codeSource = main.class.getProtectionDomain().getCodeSource();
@@ -35,7 +43,7 @@ public class FileManager {
                 if(file.isFile()){
                     Yaml yml = new Yaml();
                     InputStream stream = new FileInputStream(file);
-                    HashMap<String,Object> data = (HashMap<String,Object>)yml.load(stream);
+                    Map data = (Map)yml.load(stream);
                     YmlConfig ConfigFile = new YmlConfig(file.getAbsolutePath(), data);
                     CacheManager.add(file.getAbsolutePath().substring(getConfigsDir().length()), ConfigFile);
                 } else if (file.isDirectory()){
